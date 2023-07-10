@@ -31,8 +31,12 @@ function getInput() {
     github.getUser(searchInput.value).then((data) => {
       // eğer kullanıcı bulunamadıysa
       if (data.profile.message === 'Not Found') {
-        alert('Kullanıcı bulunamadı');
+        ui.showAlert(
+          'Aradığınız Kullanıcı Bulunamadı',
+          'alert-danger'
+        );
       } else {
+        ui.showAlert('Kullanıcı Başarıyla Bulundu', 'alert-success');
         // kullanıcı detay alanını ekrana bas
         ui.showProfile(data.profile);
 
@@ -45,7 +49,7 @@ function getInput() {
   }
 
   //* arama terimi boş ise
-  alert('form boş olamaz');
+  ui.showAlert('Form alanı boş olamaz', 'alert-info');
 }
 
 function changeTheme() {

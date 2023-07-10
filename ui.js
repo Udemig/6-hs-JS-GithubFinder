@@ -2,6 +2,7 @@ class UI {
   constructor() {
     this.profile = document.getElementById('profile');
     this.reposArea = document.getElementById('repos');
+    this.alertArea = document.getElementById('alert');
   }
   // profil arayüzünü ekrana basma
   showProfile(data) {
@@ -66,6 +67,32 @@ class UI {
       </div>
         `;
     });
+  }
+
+  // uyarı mesajı oluşturma
+  showAlert(message, classname) {
+    // div oluşturma
+    const div = document.createElement('div');
+
+    // sabit klassın belirleme
+    div.classList.add('alert');
+
+    // parametre olarak gelen alertin ringini tanımla
+    div.classList.add(classname);
+
+    // uyarı yazısını ekleme
+    div.innerText = message;
+
+    // htmle gönderme
+    // eski alertleri silme
+    this.alertArea.innerHTML = '';
+    // yeni alerti gönderme
+    this.alertArea.appendChild(div);
+
+    // ona verdiğimiz  fonksiyonu  belli bir süre sonra çalıştırır
+    setTimeout(() => {
+      div.remove();
+    }, 3000);
   }
 }
 
